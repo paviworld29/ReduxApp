@@ -1,19 +1,16 @@
-import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
-import LoginScreen from "./screens/LoginScreen";
-import HomeScreen from "./screens/HomeScreen";
-import { useSelector } from "react-redux";
+import { store } from "./src/redux/store";
 
-const Main = () => {
-  const user = useSelector((state) => state.auth.user);
-  return user ? <HomeScreen /> : <LoginScreen />;
-};
+import RootNavigator from "./src/navigation/RootNavigator";
 
 export default function App() {
   return (
     <Provider store={store}>
-      <Main />
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
     </Provider>
   );
 }
+
